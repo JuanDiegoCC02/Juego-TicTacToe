@@ -4,7 +4,7 @@ let singlerPlayer = document.getElementById("singlerPlayer")
 let notification = document.getElementById ("notification")
 let btnRestart = document.getElementById ("btnRestart")
 let btnNewGame = document.getElementById ("btnNewGame")
-let turno = document.getElementById ("turno")
+let turn = document.getElementById ("turn")
 const winCombos = [
     [0,1,2],
     [3,4,5],
@@ -55,7 +55,7 @@ const startGame = () =>{
             }
                 */
         }
-        turno.innerHTML = "Your turn O"
+        turn.innerHTML = "Your turn O"
         setTimeout (() => {
                 circleMark()} ,500)
     }));
@@ -76,23 +76,20 @@ function circleMark (){
              } else if (isDraw()) {
                 drawMsg();
              }
-            turno.innerHTML = "Your turn  X "
+            turn.innerHTML = "Your turn  X "
 }
 
 function winnerMsg(player){                         //Funcion del msj ganador
-      notification.innerHTML = `¡Congratulations, ${player} wins !`
-         gameOver = true;
+    gameOver = true;
 
-         if (player === "X") {
-            victoriesX++; // Incrementa antes de almacenar
-            localStorage.setItem("victoriesX", victoriesX);
-        } else if (player === "O") {
-            victoriesO++;
-            localStorage.setItem("victoriesO", victoriesO);
-        }
-    
-        notification.innerHTML += ` <br> Victories X: ${victoriesX}, Victories O: ${victoriesO}, Draws: ${drawGame}`;
-
+    if (player === "X") {
+        victoriesX++; // Incrementa antes de almacenar
+        localStorage.setItem("victoriesX", victoriesX);
+    } else if (player === "O") {
+        victoriesO++;
+        localStorage.setItem("victoriesO", victoriesO);
+    }
+    notification.innerHTML = `¡Congratulations, ${player} wins! <br> Victories X: ${victoriesX} / Victories O: ${victoriesO} / Draws: ${drawGame}`;
          /*
          if (player === "X"){
         
@@ -108,12 +105,10 @@ function winnerMsg(player){                         //Funcion del msj ganador
 }
 
 function drawMsg () {
-         notification.innerHTML = " Draw  "
+         gameOver = true; 
          drawGame++;
          localStorage.setItem("drawgame", drawGame)
-         gameOver = true; 
-         notification.innerHTML = `Victories X: ${victoriesX}, Victories O: ${victoriesO}, Draw: ${drawGame}`;
-}
+        notification.innerHTML = `It's a Draw! <br> Victories X: ${victoriesX} / Victories O: ${victoriesO} / Draws: ${drawGame}`;}
 
 function checkWinner() {                            //Funcionamiento de la funcion de checkWinner
     for (let combo of winCombos) {
@@ -153,13 +148,16 @@ function restartGame(){
      btnRestart.addEventListener("click", restartGame);
 
 function newGame() {
-            cells.forEach((cell) => (cell.innerHTML = ""));                              // Reinicia las cells
-            spaces.fill(null);                                                          // Limpiar el array spaces
+            cells.forEach((cell) => {(cell.innerHTML = "")});                       // Reinicia las cells
+            
+            spaces.fill(null);                                                 // Limpiar el array spaces
             win = false;
             winner = "";
             gameOver = false;
-            turno.innerHTML = "Your turn X";                                          // Empieza new game
-            notification.innerHTML = `Victories X: ${localStorage.getItem("Victories X")} / Victories O: ${localStorage.getItem("Victories O") || 0} / Draw: ${localStorage.getItem("drawGame") || 0}`;   // Muestra valores del LocalStorage
+            
+            turn.innerHTML = "Your turn X";                                // Empieza new game
+           
+            notification.innerHTML = `Victories X: ${victoriesX} / Victories O: ${victoriesO} / Draw: ${drawGame}`;   // Muestra valores del LocalStorage
   }
       btnNewGame.addEventListener("click", newGame);
 

@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="juegoStyle.css">
 </head>
 <body>
-    <div class="overlay"></div> <header>
-        <h1 class="tituloTic-Tac-Toe">TIC-TAC-TOE<br><span>GAME</span></h1>
+   <header class="headerTicTacToe">
+        <h1 class="titleTic-Tac-Toe">TIC-TAC-TOE<br><span>GAME</span></h1>
     </header>
 
-    <main>
-        <div class="status-container">
-            <h3 class="turnoStyle" id="turno">WELCOME PLAYER</h3>
+    <main class="mainTicTacToe">
+        <div class="containerTurnStatus">
+            <h3 class="turnStatus" id="turn">WELCOME PLAYER</h3>
         </div>
 
         <div id="game" class="gameTicTacToe">
@@ -33,17 +33,17 @@
             <input class="btnNG" id="btnNewGame" type="button" value="New Game">
         </div>
 
-        <div id="estadistica">
-            <h2 class="contador" id="notification">
+        <div id="statistics">
+            <h2 class="count" id="notification">
                 Victories X: 0 / Victories O: 0 / Draws: 0
             </h2>
         </div>
     </main>
 
     <footer>
-        <div class="credits-box">
-            <h5 class="creditosTicTacToe">TERMINAL ACCESS</h5>
-            <p class="webGameTitleCredtis">TicTacToe Web Engine v1.0</p>
+        <div class="containerCredits">
+            <h5 class="creditsAccess">TERMINAL ACCESS</h5>
+            <p class="webGameTitleCredtis">TicTacToe Web v1.6</p>
             <p class="authorNameCredits">Author: Juan Diego C.C.</p>
         </div>
     </footer>

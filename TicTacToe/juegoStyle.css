@@ -1,4 +1,6 @@
-/* General y Reset - Centrado Absoluto */
+/* Importación de fuentes elegantes y profesionales */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;600&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,202 +11,193 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrado vertical */
-    align-items: center;     /* Centrado horizontal */
-    background-color: #050505; /* Negro profundo */
-    background-image: radial-gradient(circle at center, #111111 0%, #050505 100%);
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-    color: #e5e7eb;
+    justify-content: center; 
+    align-items: center;    
+    background-color: #050505; 
+    /* Gradiente suave para que no sea un negro plano y aburrido */
+    background: radial-gradient(circle at center, #111111 0%, #000000 100%);
+    font-family: 'Montserrat', sans-serif;
+    color: #C0C0C0; /* Plata base */
 }
 
-/* Contenedor Principal Rígido */
-main {
+/* Contenedor Principal Rígido y Elegante */
+.mainTicTacToe {
     background-color: #0a0a0a;
-    padding: 2.5rem;
-    border-radius: 20px;
+    padding: 3rem;
+    border-radius: 12px;
     border: 1px solid #1a1a1a;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 
-                0 0 15px rgba(212, 175, 55, 0.05); /* Sutil brillo dorado */
-    width: 90vw;
-    max-width: 440px;
+    /* Sombra profunda para despegar el tablero del fondo */
+    box-shadow: 0 50px 100px -20px rgba(0,0,0,1);
+    width: 95vw;
+    max-width: 460px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 /* Encabezado */
-header {
+.headerTicTacToe {
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     text-align: center;
 }
 
-.tituloTic-Tac-Toe {
-    font-size: 1.8rem;
-    font-weight: 900;
+.titleTic-Tac-Toe {
+    font-family: 'Cinzel', serif; /* Fuente tipo joyería/museo */
+    font-size: 2.2rem;
+    color: #D4AF37; /* Oro Real */
     text-transform: uppercase;
-    letter-spacing: 4px;
-    /* Degradado Oro */
-    background: linear-gradient(135deg, #f5e6ad 0%, #d4af37 50%, #8a6d3b 100%);
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.4));
+    letter-spacing: 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.tituloTic-Tac-Toe span {
-    color: #94a3b8; /* Plata mate */
+.titleTic-Tac-Toe span {
+    color: #8E9196; /* Plata Mate */
     font-size: 0.8rem;
-    letter-spacing: 6px;
+    letter-spacing: 10px;
     display: block;
     margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* Estado del Turno - Efecto Plata */
-.status-container {
-    margin-bottom: 1.5rem;
+/* Estado del Turno */
+.containerTurnStatus {
+    margin-bottom: 2rem;
 }
 
-.turnoStyle {
+.turnStatus {
     font-size: 0.8rem;
-    font-weight: 700;
-    color: #ffffff; /* Blanco/Plata brillante */
-    background: rgba(255, 255, 255, 0.03);
-    padding: 8px 20px;
-    border-radius: 4px;
-    border: 1px solid #4b5563; /* Borde Plata */
+    font-weight: 600;
+    color: #D4AF37;
+    background: #000;
+    padding: 10px 25px;
+    border: 1px solid #D4AF37; /* Borde Oro */
     text-transform: uppercase;
-    letter-spacing: 2px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    letter-spacing: 3px;
+    border-radius: 2px;
 }
 
-/* Tablero Estructurado (No cambia de tamaño) */
+/* Tablero Estructurado */
 .gameTicTacToe {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 12px;
+    gap: 15px;
     width: 100%;
     aspect-ratio: 1 / 1; 
-    background-color: #111111;
-    padding: 12px;
-    border-radius: 12px;
-    box-sizing: border-box;
-    border: 1px solid #262626;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border: 1px solid #222;
 }
 
 .cell {
     background-color: #050505;
-    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
-    font-weight: 200; /* Oro delgado es más elegante */
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #d4af37; /* Color Oro para X y O */
-    /* Estructura bloqueada */
-    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    color: #D4AF37; /* Las jugadas aparecen en Oro */
+    border: 1px solid #1a1a1a;
+    /* Bloqueo de tamaño */
     height: 100%;
     width: 100%;
-    border: 1px solid rgba(212, 175, 55, 0.05);
+    overflow: hidden;
 }
 
 .cell:hover {
-    background-color: #0f0f0f;
-    border-color: #d4af37;
-    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1);
+    background-color: #0c0c0c;
+    border-color: #D4AF37;
 }
 
-/* Botones de Control */
+/* Btns */
 .controls {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
 .btnR, .btnNG {
     flex: 1;
-    padding: 14px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-radius: 4px;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
     text-transform: uppercase;
     letter-spacing: 2px;
+    transition: all 0.3s;
 }
 
-/* Botón Reset - Estilo Plata */
+/* btn Reset*/
 .btnR {
     background-color: transparent;
-    color: #94a3b8;
-    border: 1px solid #4b5563;
+    color: #C0C0C0;
+    border: 1px solid #C0C0C0;
 }
 
 .btnR:hover {
-    background-color: #f1f5f9;
-    color: #050505;
-    border-color: #f1f5f9;
+    background-color: #C0C0C0;
+    color: #000;
 }
 
-/* Botón New Game - Estilo Oro */
+/* btn newGame */
 .btnNG {
-    background: linear-gradient(135deg, #f5e6ad 0%, #d4af37 100%);
-    color: #050505;
-    border: none;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    background-color: #D4AF37;
+    color: #000;
+    border: 1px solid #D4AF37;
 }
 
 .btnNG:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #f5e6ad 100%);
+    background-color: #B8860B; /* Oro más oscuro al presionar */
+    border-color: #B8860B;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
 
-/* Contador / Estadísticas */
-.contador {
+/* count / statistics */
+#statistics {
     width: 100%;
     margin-top: 2rem;
-    padding: 15px;
-    background-color: #050505;
-    border: 1px solid #1a1a1a;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    color: #64748b; /* Plata oscuro */
+}
+
+.count {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    color: #8E9196;
     text-align: center;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 15px;
     letter-spacing: 1px;
 }
 
-.contador b {
-    color: #d4af37; /* Resaltar números en oro */
-}
-
-/* Footer Tech */
+/* Footer styles */
 footer {
     margin-top: 3rem;
     padding-bottom: 2rem;
     text-align: center;
-    border-top: 1px solid #1a1a1a;
     width: 100%;
-    max-width: 440px;
 }
 
-.credits-box h5 {
-    color: #d4af37;
-    margin: 15px 0 8px 0;
+.creditsAccess {
+    font-family: 'Montserrat', sans-serif;
+    color: #D4AF37;
     font-size: 0.7rem;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-.credits-box p {
-    font-size: 0.7rem;
+.webGameTitleCredtis, .authorNameCredits {
+    font-size: 0.65rem;
     color: #4b5563;
-    margin: 4px 0;
+    text-transform: uppercase;
 }
 
-/* Responsividad */
+/* Ajustes Responsivos */
 @media (max-width: 480px) {
-    main { padding: 1.5rem; }
-    .cell { font-size: 2.5rem; }
+    .mainTicTacToe { padding: 1.5rem; }
+    .cell { font-size: 2.8rem; }
 }
